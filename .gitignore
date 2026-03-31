@@ -1,0 +1,26 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Env files
+.env
+.env.local
+.env.*
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+
+# Build
+dist/
+.next/
+
+# Docker
+docker-data/
+
+# IDE
+.vscode/
+.idea/
