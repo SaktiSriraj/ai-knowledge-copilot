@@ -1,4 +1,5 @@
 import { parseFile } from "../rag/ingestion/parse.js";
+import { chunkText } from "../rag/ingestion/chunk.js";
 
 export const processUpload = async (file, userId) => {
     if (!file) {
@@ -7,8 +8,11 @@ export const processUpload = async (file, userId) => {
 
     const text = await parseFile(file);
 
+    const chunks = chunkText(text);
+
     return {
-        text,
+        chunks,
+        chunksCount: chunks.length,
         length: text.length,
         userId
     };

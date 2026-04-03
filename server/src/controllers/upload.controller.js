@@ -5,7 +5,7 @@ export const uploadController = async (req, res, next) => {
         const result = await processUpload(req.file, req.user.id);
 
         res.json({
-            message: "File Processed Successfully",
+            message: "File Processed and Chunked Successfully",
             ...result
         })
     } catch (err) {
