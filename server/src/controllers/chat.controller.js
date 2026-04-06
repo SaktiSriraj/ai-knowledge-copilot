@@ -1,4 +1,4 @@
-import { handleChat } from "../services/chat.services.js";
+import { handleChat } from "../services/chat.service.js";
 
 export const chatController = async (req, res, next) => {
     try {
