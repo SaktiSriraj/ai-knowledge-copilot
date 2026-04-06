@@ -1,13 +1,9 @@
 import { Router } from "express";
 import { requireAuth } from "../../middleware/auth.middleware.js";
+import { chatController } from "../../controllers/chat.controller.js";
 
 const router = Router();
 
-router.post("/", requireAuth, (req, res) => {
-    res.json({ 
-        message: "Chat route working",
-        userId: req.user.id 
-    });
-});
+router.post("/", requireAuth, chatController);
 
 export default router;
