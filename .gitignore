@@ -24,3 +24,6 @@ docker-data/
 # IDE
 .vscode/
 .idea/
+
+# Qdrant Data
+qdrant_data/
