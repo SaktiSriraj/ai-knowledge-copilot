@@ -46,9 +46,20 @@ export const processUpload = async (file, userId) => {
         }
     }));
 
-    await qdrant.upsert(COLLECTION_NAME, {
-        points,
-    });
+    const BATCH_SIZE = 50;
+
+    for(let i = 0; i < points.length; i += BATCH_SIZE) {
+        const batch = points.slice(i, i + BATCH_SIZE);
+
+        try {
+            await qdrant.upsert(COLLECTION_NAME, {
+                points: batch,
+            });
+        } catch (err) {
+            console.error("Qdrant upsert failed", err.message);
+            throw err;
+        }
+    }
 
     return {
         message: "Stored in vectorDB",
